@@ -16,15 +16,20 @@ function playNextVideo() {
 }
 
 // Function to check the URL every 5 seconds
-function checkUrlAndStart() {
-  if (window.location.href === "https://www.youtube.com/watch?v=__bNjF-xR1U") {
-    console.log("URL matched! Starting 2-minute countdown...");
+function getYouTubeVideoId() {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get("v");
+}
+
+function checkVideoIdAndStart() {
+  if (getYouTubeVideoId() === "__bNjF-xR1U") {
+    console.log("Video ID matched! Starting 2-minute countdown...");
     setTimeout(playNextVideo, 120000); // 2 minutes = 120,000 milliseconds
   } else {
-    console.log("URL does not match. Checking again in 5 seconds...");
-    setTimeout(checkUrlAndStart, 5000); // Re-check the URL every 5 seconds
+    console.log("Video ID does not match. Checking again in 5 seconds...");
+    setTimeout(checkVideoIdAndStart, 5000); // Re-check the video ID every 5 seconds
   }
 }
 
-// Start checking the URL every 5 seconds
-checkUrlAndStart();
+checkVideoIdAndStart();
+
