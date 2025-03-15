@@ -9,14 +9,6 @@
         return urlParams.get("v"); // Extracts the video ID from YouTube URL
     }
 
-    function stopAutoPlay() {
-        let autoplayToggle = document.querySelector(".ytp-autonav-toggle-button");
-        if (autoplayToggle && autoplayToggle.getAttribute("aria-checked") === "true") {
-            autoplayToggle.click(); // Turn off autoplay
-            console.log("Autoplay disabled.");
-        }
-    }
-
     function playNext() {
         let currentVideoID = getCurrentVideoID();
 
@@ -24,7 +16,6 @@
         if (currentVideoID === specialVideoID) {
             console.log("Special video is playing. Stopping auto next.");
             clearTimeout(autoNextInterval); // Stop the loop completely
-            stopAutoPlay(); // Disable autoplay to prevent YouTube from moving to the next video
             return;
         }
 
@@ -49,7 +40,6 @@
         if (currentVideoID === specialVideoID) {
             console.log("Special video detected in loop. Stopping script.");
             clearTimeout(autoNextInterval); // Stop any future executions
-            stopAutoPlay(); // Ensure autoplay is disabled
             return;
         }
 
