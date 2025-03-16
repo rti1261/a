@@ -45,7 +45,7 @@ function randomPausePlay() {
   let video = document.querySelector('video');
   if (!video) return;
 
-  let interval = [618000, 768000, 876000][Math.floor(Math.random() * 3)];
+  let interval = [6180, 7680, 8760][Math.floor(Math.random() * 3)];
 
   setInterval(() => {
     if (!video.paused) {
@@ -67,7 +67,7 @@ function randomPausePlay() {
 function randomSkipKeyPress() {
   let video = document.querySelector('video');
   if (video) {
-    let intervals = [318000, 444000, 480000, 564000]; // Intervals in milliseconds
+    let intervals = [3180, 4440, 4800, 5640]; // Intervals in milliseconds
     
     setInterval(() => {
       // Simulate right arrow key press to skip forward
@@ -80,7 +80,7 @@ function randomSkipKeyPress() {
 function randomSeekBackward() {
   let video = document.querySelector('video');
   if (video) {
-    let intervals = [477000, 666000, 720000, 846000]; // Intervals in milliseconds
+    let intervals = [4770, 6660, 7200, 8460]; // Intervals in milliseconds
     
     setInterval(() => {
       // Simulate right arrow key press to skip backward
@@ -149,7 +149,7 @@ function simulateMouseScroll() {
         });
 
         // Schedule next scroll sequence at a random interval between 1 to 2 minutes
-        let nextExecutionTime = Math.floor(Math.random() * (120000 - 60000) + 60000); // Random between 60s and 120s
+        let nextExecutionTime = Math.floor(Math.random() * (12000 - 6000) + 60000); // Random between 60s and 120s
         console.log(`Next scroll sequence will run in ${(nextExecutionTime / 1000).toFixed(1)} seconds.`);
 
         setTimeout(executeScrollSequence, nextExecutionTime); // Recursively loop with random time
