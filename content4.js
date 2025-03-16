@@ -28,13 +28,13 @@ function setVideoQuality() {
     }
 }
 
-// Wait for the first video to start playing
-let video = document.querySelector('video');
-
-if (video) {
-    video.addEventListener('playing', function () {
-        setTimeout(setVideoQuality, 1000); // Delay to allow menu to load properly
-    }, { once: true }); // Ensure it only runs once for the first video
-} else {
-    console.warn("No video found on the page.");
-}
+// Check if the video is loaded every 500ms until found
+let videoInterval = setInterval(function () {
+    let video = document.querySelector('video');
+    if (video) {
+        clearInterval(videoInterval); // Stop checking once video is found
+        video.addEventListener('playing', function () {
+            setTimeout(setVideoQuality, 15000); // Delay for 15 seconds before changing the quality
+        }, { once: true });
+    }
+}, 500);
